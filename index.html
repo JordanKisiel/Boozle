@@ -6,128 +6,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boozle - Search Responsibly</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./src/assets/output.css">
 </head>
-<body style="background-color: #222222;">
+<body class="font-sans">
   <main>
-    <header>
-      <img src="./src/assets/logo.svg" alt="Boozle logo">
-      <button>
-        <span>0</span>
-        <span>Saved Drinks</span>
-      </button>
+    <header class="fixed left-0 right-0 top-0 bg-blue-600 pt-8 pb-6 px-4 border-b-2 border-[rgba(255_255_255/0.03)] z-10 sm:px-12">
+      <div class="flex justify-between items-center md:w-3/4 md:mx-auto lg:w-[48rem]">
+        <img src="./src/assets/logo.svg" alt="Boozle logo">
+        <button class="text-pink-300 font-bold bg-blue-300 bg-[url('../assets/saved-drinks-arrow.svg')] bg-no-repeat bg-[center_right_0.1rem] pl-2 pr-[2.6rem] pt-2 pb-1 border-2 border-[rgba(255_255_255/0.06)] rounded-[2px] drop-shadow-xl">
+          <span class="inline-block text-[2.5rem] font-normal leading-5">0</span>
+          <span class="inline-block border-l-[1px] border-l-blue-100 uppercase w-12 leading-4 tracking-widest pl-1">Saved Drinks</span>
+        </button>
+      </div>
     </header>
-    <section>
-      <h1>
+    <section id="main-display" class="bg-[#0B0B0B] flex flex-col gap-6 items-center px-4 pt-32 pb-32 overflow-scroll -z-10 min-h-screen sm:px-12">
+      <h1 class="hidden text-center font-normal text-2xl text-gray-300 w-3/5 tracking-widest md:my-6">
         What would you like to use?
       </h1>
       <!-- Alcohol filters -->
-      <div>
-        <button>Alcohol</button>
-        <div>
-          <div>
-            <button>Vodka</button>
-            <button>Rum</button>
-            <button>Whiskey</button>
-            <button>Wine</button>
-            <button>Absinthe</button>
+      <div class="hidden w-full rounded-sm overflow-hidden drop-shadow-xl md:w-3/4 lg:w-[48rem]">
+        <button class="bg-blue-600 text-orange-300 text-xl w-full py-1 bg-[url('../assets/up-arrow.svg')] bg-no-repeat bg-[center_right_1rem] tracking-widest">Alcohol</button>
+        <div class="bg-blue-300 px-5 py-5 space-y-8">
+          <div class="flex flex-wrap gap-4">
+            <button class="bg-orange-300 text-blue-300 font-bold text-xl rounded-sm pl-3 pr-9 py-0.5 bg-[url('../assets/filter-minus.svg')] bg-no-repeat bg-[center_right_0.75rem] tracking-wider">Vodka</button>
+            <button class="bg-blue-100 text-gray-300 font-bold text-xl rounded-sm pl-3 pr-9 py-0.5 bg-[url('../assets/filter-plus.svg')] bg-no-repeat bg-[center_right_0.75rem] tracking-wider">Rum</button>
+            <button class="bg-blue-100 text-gray-300 font-bold text-xl rounded-sm pl-3 pr-9 py-0.5 bg-[url('../assets/filter-plus.svg')] bg-no-repeat bg-[center_right_0.75rem] tracking-wider">Whiskey</button>
+            <button class="bg-blue-100 text-gray-300 font-bold text-xl rounded-sm pl-3 pr-9 py-0.5 bg-[url('../assets/filter-plus.svg')] bg-no-repeat bg-[center_right_0.75rem] tracking-wider">Wine</button>
+            <button class="bg-blue-100 text-gray-300 font-bold text-xl rounded-sm pl-3 pr-9 py-0.5 bg-[url('../assets/filter-plus.svg')] bg-no-repeat bg-[center_right_0.75rem] tracking-wider">Absinthe</button>
           </div>
-          <div>
-            <input type="text" placeholder="Search for more...">
-            <button>Add</button>
+          <div class="border-t-2 border-[rgba(255_255_255/0.08)] pt-4 pb-0 flex">
+            <input class="bg-blue-600 text-gray-600 py-2 px-3 tracking-wider rounded-l-sm w-full placeholder:text-gray-600" type="text" placeholder="Search for more...">
+            <button class="text-transparent bg-blue-100 w-1/3 rounded-r-sm bg-[url('../assets/filter-plus.svg')] bg-no-repeat bg-center sm:w-1/4 md:w-1/6 lg:w-24">Add</button>
           </div>
         </div>
       </div>
       <!-- END Alcohol filters -->
-      <!-- Mixer filters -->
-      <div>
-        <button>Mixer</button>
-        <div>
-          <div>
-            <button>Orange Juice</button>
-            <button>Tomato Juice</button>
-            <button>Milk</button>
-          </div>
-          <div>
-            <input type="text" placeholder="Search for more...">
-            <button>Add</button>
-          </div>
-        </div>
+      
+      <!-- Collapsed filters -->
+      <div class="hidden w-full rounded-sm overflow-hidden drop-shadow-xl md:w-3/4 lg:w-[48rem]">
+        <button class="bg-blue-600 text-pink-300 text-xl w-full py-3 bg-[url('../assets/down-arrow.svg')] bg-no-repeat bg-[center_right_1rem] tracking-widest relative">
+          <span class="absolute left-2 top-1/4 inline-block mt-0.5 bg-blue-900 rounded-full px-4 py-0.5 text-gray-600 italic text-sm tracking-widest">2 selected</span>
+          <span>Mixer</span>
+        </button>
       </div>
-      <!-- END Mixer filters -->
-      <!-- Other filters -->
-      <div>
-        <button>Other</button>
-        <div>
-          <div>
-            <button>Salt</button>
-            <button>Olives</button>
-            <button>Strawberries</button>
-          </div>
-          <div>
-            <input type="text" placeholder="Search for more...">
-            <button>Add</button>
-          </div>
-        </div>
+      <div class="hidden w-full rounded-sm overflow-hidden drop-shadow-xl md:w-3/4 lg:w-[48rem]">
+        <button class="bg-blue-600 text-violet-300 text-xl w-full py-3 bg-[url('../assets/down-arrow.svg')] bg-no-repeat bg-[center_right_1rem] tracking-widest relative">
+          <span class="absolute left-2 top-1/4 inline-block mt-0.5 bg-blue-900 rounded-full px-4 py-0.5 text-gray-600 italic text-sm tracking-widest">3 selected</span>
+          <span>Other</span>
+        </button>
       </div>
-      <!-- END Other filters -->
-      <!-- Dislikes filters -->
-      <div>
-        <button>Dislikes</button>
-        <div>
-          <div>
-            <button>Gin</button>
-            <button>Bourbon</button>
-            <button>Tomato Juice</button>
-          </div>
-          <div>
-            <input type="text" placeholder="Search for more...">
-            <button>Add</button>
-          </div>
-        </div>
+      <div class="hidden w-full rounded-sm overflow-hidden drop-shadow-xl md:w-3/4 lg:w-[48rem]">
+        <button class="bg-blue-600 text-violet-400 text-xl w-full py-3 bg-[url('../assets/down-arrow.svg')] bg-no-repeat bg-[center_right_1rem] tracking-widest relative">
+          <span class="absolute left-2 top-1/4 inline-block mt-0.5 bg-blue-900 rounded-full px-4 py-0.5 text-gray-600 italic text-sm tracking-widest">1 selected</span>
+          <span>Dislikes</span>
+        </button>
       </div>
-      <!-- END Dislikes filters -->
-      <button>Clear All</button>
-      <!-- Result -->
-      <button>
-        <span><!-- cocktail img as bg image --></span>
-        <span>Cocktail Name</span>
-        <span>Rum, Orange Juice, Salt...</span>
+      <!-- END Collapsed filters -->
+      <!-- Clear Filters Button -->
+      <button class="hidden bg-blue-300 text-gray-600 tracking-widest uppercase rounded-full py-1 pl-9 pr-4 bg-[url('../assets/clear-all-x.svg')] bg-no-repeat bg-[center_left_1rem] border-[rgba(255_255_255/0.1)] border-[1px] mt-8">Clear All</button>
+      <!-- END Clear Filters Button -->
+      <!-- Result or Saved Drink -->
+      <button class="hidden bg-blue-600 py-3 w-full drop-shadow-xl grid grid-cols-[1fr_4fr] grid-rows-2 px-6 gap-y-1.5 gap-x-6 sm:w-[30rem]">
+        <span class="bg-[url('../assets/cocktail-thumb.png')] bg-no-repeat bg-cover inline-block w-full aspect-square rounded-full border-2 border-pink-300 row-span-2"><!-- cocktail img as bg image --></span>
+        <span class="text-pink-300 text-xl justify-self-start sm:text-2xl">Cocktail Name</span>
+        <span class="bg-blue-900 rounded-full px-3.5 py-0.5 text-gray-600 italic text-sm tracking-widest justify-self-start sm:text-base">Rum, Orange Juice, Salt...</span>
       </button>
-      <!-- END Result -->
+      <!-- END Result or Saved Drink -->
+      
       <!-- Recipe -->
-      <div>
-        <img src="./src/assets/cocktail-thumb.png" alt="thumbnail picture of cocktail">
-        <button>Close</button>
-        <h2>Cocktail Name</h2>
-        <div>
-          <h3>Ingredients</h3>
-          <p>Rum, Orange Juice, Salt...</p>
+      <div class=" bg-blue-600 flex flex-col items-center w-full relative mt-16 px-4 pt-16 pb-6 rounded-sm drop-shadow-xl min-h-[200%] sm:w-[30rem]">
+        <img class="absolute w-28 aspect-square rounded-full border-4 border-pink-300 -top-[4rem]" src="./src/assets/cocktail-thumb.png" alt="thumbnail picture of cocktail">
+        <button class="absolute bg-blue-900 top-3 right-3 text-transparent text-[0px] p-5 bg-[url('../assets/choose-no-x.svg')] bg-no-repeat bg-center rounded-full">Close</button>
+        <h2 class="text-pink-300 text-xl tracking-wider mb-6">Cocktail Name</h2>
+        <div class="rounded-sm overflow-hidden w-full bg-blue-300 mb-6">
+          <h3 class="bg-blue-900 text-gray-600 text-sm w-full text-center py-1.5 tracking-wider">Ingredients</h3>
+          <p class="px-4 py-3 italic text-violet-300 tracking-wider">Rum, Orange Juice, Salt...</p>
         </div>
-        <div>
-          <h3>Instructions</h3>
-          <p>Combine all and shake</p>
+        <div class="rounded-sm overflow-hidden w-full bg-blue-300 mb-10">
+          <h3 class="bg-blue-900 text-gray-600 text-sm w-full text-center py-1.5 tracking-wider">Instructions</h3>
+          <p class="px-4 py-3 text-gray-300 text-sm tracking-wider sm:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod tellus ac accumsan interdum. Duis nisi eros, luctus vitae dui non, sollicitudin aliquet nibh. Vivamus rutrum bibendum elementum. Sed varius commodo faucibus. Nam eget odio mi. In dapibus quam at velit ornare, at varius ante pellentesque. Integer dignissim vulputate facilisis. Phasellus vestibulum enim eu diam accumsan viverra. Fusce quis luctus urna. Aenean eu dolor mi. Duis ornare viverra nibh, feugiat lacinia nibh dictum in. Proin faucibus, mi sit amet mollis consequat, nibh risus lacinia tortor, id elementum odio lorem nec ex. Nulla ac urna elementum, convallis urna eget, tristique est. Morbi viverra leo non mi pretium, at sagittis nulla condimentum. Vestibulum fringilla libero ac vestibulum blandit. Fusce vitae sollicitudin augue.</p>
         </div>
-        <button>Save Drink for Later</button>
+        <button class="bg-blue-300 text-pink-300 uppercase font-bold rounded-sm tracking-widest pl-10 pt-3.5 pb-3 w-full border-2 border-[rgba(255_255_255/0.06)] drop-shadow-xl bg-[url('../assets/add-drink-plus.svg')] bg-no-repeat bg-[center_left_2rem]">Save Drink for Later</button>
       </div>
       <!-- End Recipe -->
-      <!-- Saved Drink -->
-      <button>
-        <span><!-- cocktail thumbnail as bg --></span>
-        <span>Cocktail Name</span>
-        <span></span>
-      </button>
-      <!-- END Saved Drink-->
     </section>
-    <div>
-      <button type="submit">Search Responsibly</button>
+    <!-- Search Button -->
+    <div class="flex justify-center fixed left-0 right-0 bottom-0 bg-blue-600 p-4 border-t-2 border-[rgba(255_255_255/0.03)] sm:px-12">
+      <button id="search-btn" class="bg-gray-600 rounded-sm w-full font-bold uppercase tracking-wider py-3.5 text-blue-600 text-xl drop-shadow-xl bg-gradient-to-r from-[#D79472] via-[#C94F6A] to-[#C2335C] border-2 border-[#cc7777] sm:w-96" type="submit">
+        <span class="bg-[url('../assets/martini-icon.svg')] bg-no-repeat bg-[center_left_1rem] pl-[3.25rem] py-3 mr-5">Search Responsibly</span>
+      </button>
     </div>
+    <!-- END Search Button -->
     <!-- Clear All Filters Modal -->
-    <div>
-      <div>
-        <h2>Clear all filters?</h2>
-        <button>Yes</button>
-        <button>No</button>
+    <div class="hidden fixed inset-0 bg-[rgba(0_0_0/0.5)] z-20">
+      <div class="bg-blue-300 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center w-2/3 py-8 gap-4 rounded-sm shadow-[0_0_30px_rgba(0_0_0/0.5)]">
+        <h2 class="text-xl tracking-wider text-gray-300 mb-8">Clear all filters?</h2>
+        <button class="bg-blue-600 text-gray-300 uppercase font-bold w-3/5 py-3 text-lg tracking-wider bg-[url('../assets/check-mark.svg')] bg-no-repeat bg-[center_left_1.1rem]">Yes</button>
+        <button class="bg-blue-600 text-gray-300 uppercase font-bold w-3/5 py-3 text-lg tracking-wider bg-[url('../assets/choose-no-x.svg')] bg-no-repeat bg-[center_left_1.1rem]">No</button>
       </div>
     </div>
     <!-- END Clear All Filters Modal -->
