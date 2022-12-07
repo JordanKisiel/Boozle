@@ -3,19 +3,28 @@ import DiscloseButton from './DiscloseButton'
 import FilterButton from './FilterButton'
 import FilterSearch from './FilterSearch'
 
-export default function FilterSelect(){
+
+export default function FilterSelect(props){
+    
+    const filterBtnArray = props.defaultIngredients.map((ingredient) => {
+        return (
+            <FilterButton 
+                name={ingredient} 
+                bgColor={props.bgColor}
+                filterCategory={props.title}
+                filterState={props.filterState} 
+                handleFilterSelect={props.handleFilterSelect}
+            />
+        )
+    })
+
     return (
         <>
-            <div className="hidden w-full rounded-sm overflow-hidden drop-shadow-xl md:w-3/4 lg:w-[48rem]">
-                <DiscloseButton />
+            <div className="w-full rounded-sm overflow-hidden drop-shadow-xl md:w-3/4 lg:w-[48rem]">
+                <DiscloseButton title={props.title} titleColor={props.titleColor} />
                 <div className="bg-blue-300 px-5 py-5 space-y-8">
                     <div className="flex flex-wrap gap-4">
-                        <FilterButton />
-                        <FilterButton />
-                        <FilterButton />
-                        <FilterButton />
-                        <FilterButton />
-                        <FilterButton />
+                        { filterBtnArray }
                     </div>
                     <div className="border-t-2 border-[rgba(255_255_255/0.08)] pt-4 pb-0 flex">
                         <FilterSearch />

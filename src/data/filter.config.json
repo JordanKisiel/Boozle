@@ -1,0 +1,81 @@
+{
+    "filters": [
+        {
+            "title": "Alcohol",
+            "titleColor": "text-orange-300",
+            "bgColor": "bg-orange-300",
+            "defaultIngredients": [
+                "Vodka",
+                "Gin",
+                "Tequila",
+                "Rum",
+                "Whiskey"
+            ],
+            "otherIngredients": [
+                "Brandy",
+                "Vermouth",
+                "Triple Sec"
+            ]
+        },
+        {
+            "title": "Mixer",
+            "titleColor": "text-pink-300",
+            "bgColor": "bg-pink-300",
+            "defaultIngredients": [
+                "Lime Juice",
+                "Orange Juice",
+                "Cranberry Juice",
+                "Pineapple Juice",
+                "Tomato Juice",
+                "Bitters",
+                "Simple Syrup",
+                "Grenadine",
+                "Coffee",
+                "Club Soda",
+                "Tonic",
+                "Ginger Ale"
+            ],
+            "otherIngredients": [
+                "Milk",
+                "Sour Mix",
+                "Tea",
+                "Tobasco Sauce"
+            ]
+        },
+        {
+            "title": "Other",
+            "titleColor": "text-violet-300",
+            "bgColor": "bg-violet-300",
+            "defaultIngredients": [
+                "Lemons",
+                "Limes",
+                "Oranges",
+                "Cherries",
+                "Olives",
+                "Mint",
+                "Salt",
+                "Sugar"
+            ],
+            "otherIngredients": [
+                "Pickles"
+            ]
+        },
+        {
+            "title": "Dislikes",
+            "titleColor": "text-violet-200",
+            "bgColor": "bg-violet-200",
+            "defaultIngredients": [
+                "Gin",
+                "Tequila",
+                "Bitters",
+                "Whiskey",
+                "Coffee",
+                "Tomato Juice"
+            ],
+            "otherIngredients": [
+                "Pickles"
+            ]
+        }
+        
+    ]
+}

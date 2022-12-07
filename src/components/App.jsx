@@ -4,8 +4,7 @@ import MainDisplay from './MainDisplay'
 import SearchButton from './SearchButton'
 
 export default function App(){
-    //state that tells the app what components to display
-
+    
     const [displayState, setDisplayState] = React.useState('filter')
 
     return (
