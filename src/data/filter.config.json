@@ -28,18 +28,18 @@
                 "Pineapple Juice",
                 "Tomato Juice",
                 "Bitters",
-                "Simple Syrup",
-                "Grenadine",
                 "Coffee",
                 "Club Soda",
-                "Tonic",
-                "Ginger Ale"
+                "Tonic"
             ],
             "otherIngredients": [
                 "Milk",
                 "Sour Mix",
                 "Tea",
-                "Tobasco Sauce"
+                "Tobasco Sauce",
+                "Simple Syrup",
+                "Grenadine",
+                "Ginger Ale"
             ]
         },
         {
