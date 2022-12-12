@@ -1,19 +1,36 @@
 import React from 'react'
 import DiscloseButton from './DiscloseButton'
 import FilterButton from './FilterButton'
-import FilterSearch from './FilterSearch'
+import MoreFiltersModal from './MoreFiltersModal'
 import { motion, AnimatePresence } from "framer-motion"
 
 
 export default function FilterSelect(props){
     
     const [isOpen, setIsOpen] = React.useState(false)
+    const [isModalOpen, setIsModalOpen] = React.useState(false)
 
     function handleFilterOpen(){
         setIsOpen((prevValue) => !prevValue)
     }
 
-    const filterBtnArray = props.defaultIngredients.map((ingredient, index) => {
+    function handleModalOpen(){
+        setIsModalOpen(true)
+    }
+
+    function handleModalClose(){
+        setIsModalOpen(false)
+    }
+
+    const totalIngredients = [
+        ...new Set(
+            [
+                ...props.defaultIngredients, 
+                ...props.filterState.ingredients.filter(ingredient => props.otherIngredients.includes(ingredient))
+            ]
+        )
+    ]
+    const filterBtnArray = totalIngredients.map((ingredient, index) => {
         return (
             <FilterButton
                 key={index} 
@@ -30,7 +47,8 @@ export default function FilterSelect(props){
         <>
             <div className="w-full rounded-sm overflow-hidden drop-shadow-xl md:w-3/4 lg:w-[48rem]">
                 <DiscloseButton 
-                    title={props.title} titleColor={props.titleColor}
+                    title={props.title} 
+                    titleColor={props.titleColor}
                     isOpen={isOpen}
                     ingredients={[...props.defaultIngredients, ...props.otherIngredients]}
                     filterState={props.filterState}
@@ -56,13 +74,14 @@ export default function FilterSelect(props){
                                     { filterBtnArray }
                                 </div>
                                 <div className="border-t-2 border-[rgba(255_255_255/0.08)] pt-4 pb-0 flex">
-                                    <FilterSearch />
+                                    <button onClick={handleModalOpen} className="bg-blue-300 text-gray-300 font-bold w-full rounded-sm py-2 border-2 border-[rgba(255_255_255/0.06)] uppercase tracking-wider bg-[url(../assets/filter-plus.svg)]  bg-no-repeat bg-[center_right_5rem] drop-shadow-xl">More Options</button>
                                 </div>
                             </div>
                         </motion.div>
                     )}
                 </AnimatePresence>
             </div>
+            {isModalOpen && <MoreFiltersModal otherIngredients={props.otherIngredients} bgColor={props.bgColor} titleColor={props.titleColor} filterCategory={props.title} filterState={props.filterState} handleFilterSelect={props.handleFilterSelect} handleModalClose={handleModalClose} />}
         </>
     )
 }
