@@ -16,7 +16,10 @@ export default function InfoDisplay(props){
             textToDisplay = 'Top 50 results'
         }
     }
-    
+    else if(currentDisplay === 'saved'){
+        textToDisplay = "Looks like you don't have any drinks saved. Try searching for some and adding them."
+    }
+
     return (
         <h1 className="text-center font-normal text-2xl text-gray-300 w-3/5 tracking-widest md:my-6">
             {textToDisplay}

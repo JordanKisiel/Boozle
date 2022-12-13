@@ -30,7 +30,8 @@ export default function MainDisplay(props){
                 <SavedResults
                     savedDrinks={props.savedDrinks}
                     handleRecipeDisplay={props.handleRecipeDisplay}
-                    displayState={props.displayState} 
+                    displayState={props.displayState}
+                    sortedResultIDs={props.sortedResultIDs} 
                 /> 
             }
             { currentDisplay === 'recipe' && 

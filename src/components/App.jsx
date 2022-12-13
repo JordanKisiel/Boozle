@@ -142,7 +142,14 @@ export default function App(){
     }
 
     function handleSaveDrink(drink){
-        setSavedDrinks((prevArray) => [...prevArray, drink])
+        setSavedDrinks((prevArray) => {
+            if(!prevArray.some(storedDrink => storedDrink.idDrink === drink.idDrink)){
+                return [...prevArray, drink]
+            }
+            else{
+                return prevArray
+            }
+        })
     }
 
     function handleViewSaved(){

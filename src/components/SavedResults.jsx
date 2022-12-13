@@ -18,6 +18,9 @@ export default function SavedResults(props){
 
     return (
         <>
+            { (props.savedDrinks.length === 0) &&
+                <InfoDisplay displayState={props.displayState} sortedResultsIDs={props.sortedResultsIDs} />
+            }
             { savedDrinksArray }
         </>
     )
