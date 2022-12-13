@@ -24,7 +24,7 @@ export default function SearchResults(props){
 
     return (
         <>
-            <InfoDisplay displayState={props.displayState} sortedResultIDs={props.sortedResultIDs} />
+            <InfoDisplay displayState={props.displayState} sortedResultIDs={props.sortedResultIDs} filterState={props.filterState} />
             { resultBtnArray.slice(0, maxNumToDisplay + 1) }
         </>
     )

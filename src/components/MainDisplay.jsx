@@ -24,6 +24,7 @@ export default function MainDisplay(props){
                     sortedResultIDs={props.sortedResultIDs} 
                     displayState={props.displayState}
                     handleRecipeDisplay={props.handleRecipeDisplay}
+                    filterState={props.filterState}
                 /> 
             }
             { currentDisplay === 'saved' && 
@@ -36,9 +37,11 @@ export default function MainDisplay(props){
             }
             { currentDisplay === 'recipe' && 
                 <Recipe 
-                    recipe={props.recipe} 
+                    recipe={props.recipe}
+                    savedDrinks={props.savedDrinks} 
                     handleRecipeClose={props.handleRecipeClose}
                     handleSaveDrink={props.handleSaveDrink}
+                    handleRemoveDrink={props.handleRemoveDrink}
                 /> 
             }
         </section>

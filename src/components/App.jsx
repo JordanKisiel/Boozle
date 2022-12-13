@@ -79,33 +79,62 @@ export default function App(){
             Promise.all(fetchArray)
                 .then(dataArray => {
 
-                    //join all request results into one array
-                    let allResultsArray = []
-
-                    dataArray.forEach((data) => {
-                        allResultsArray = [...allResultsArray, ...data.drinks]    
+                    const dislikeFetchArray = filterState.dislikes.map((ingredient) => {
+                        return fetch(`${baseUrl}/${apiKey.apiKey}/filter.php?i=${ingredient}`)
+                                .then(res => res.json())
                     })
 
-                    setAllSearchResults(allResultsArray)
+                    Promise.all(dislikeFetchArray)
+                        .then(dislikeDataArray => {
 
-                    //find occurences of result ids
-                    const occurences = {}
+                            //join all request results into one array
+                            let allResultsArray = []
 
-                    const resultIDs = allResultsArray.map(drink => drink.idDrink)
+                            dataArray.forEach((data) => {
+                                allResultsArray = [...allResultsArray, ...data.drinks]    
+                            })
 
-                    for(const id of resultIDs){
-                        occurences[id] = occurences[id] ? occurences[id] + 1 : 1
-                    }
+                            //join all the dislike results into one array
+                            let dislikeArray = []
 
-                    //sort ids by number of occurences
-                    const sortedIDs = Object.keys(occurences).sort((a, b) => {
-                        return occurences[b] - occurences[a]
-                    })
+                            dislikeDataArray.forEach((data) => {
+                                dislikeArray = [...dislikeArray, ...data.drinks]
+                            })
 
-                    setSortedResultIDs(sortedIDs)
+                            //filter out any results that include a dislike in their ingredients
+                            //TODO:
+                            // -I have to create separate fetch using each dislike
+                            //  -join results together
+                            //  -then compare that to the search results and remove any matches
 
-                    setDisplayState((prevArray) => [...prevArray, 'search'])
+                            const dislikeIDs = dislikeArray.map(drink => drink.idDrink)
+
+                            const filteredArray = allResultsArray.filter(drink => {
+                                return !dislikeIDs.includes(drink.idDrink)
+                            })
+
+                            setAllSearchResults(filteredArray)
+
+                            //find occurences of result ids
+                            const occurences = {}
+
+                            const resultIDs = filteredArray.map(drink => drink.idDrink)
+
+                            for(const id of resultIDs){
+                                occurences[id] = occurences[id] ? occurences[id] + 1 : 1
+                            }
+
+                            //sort ids by number of occurences
+                            const sortedIDs = Object.keys(occurences).sort((a, b) => {
+                                return occurences[b] - occurences[a]
+                            })
+
+                            setSortedResultIDs(sortedIDs)
+
+                            setDisplayState((prevArray) => [...prevArray, 'search'])
+                        })
                 })
+
         }
         else{
 
@@ -117,7 +146,7 @@ export default function App(){
                     setSortedResultIDs(data.drinks.map(drink => drink.idDrink))
                     setDisplayState((prevArray) => [...prevArray, 'search'])
                 })
-        }
+        }           
 
     }
 
@@ -152,6 +181,10 @@ export default function App(){
         })
     }
 
+    function handleRemoveDrink(drink){
+        setSavedDrinks((prevArray) => prevArray.filter(storedDrink => !(storedDrink.idDrink === drink.idDrink)))
+    }
+
     function handleViewSaved(){
         setDisplayState((prevArray) => [...prevArray, 'saved'])
     }
@@ -175,6 +208,7 @@ export default function App(){
                 handleRecipeDisplay={handleRecipeDisplay}
                 handleRecipeClose={handleRecipeClose}
                 handleSaveDrink={handleSaveDrink}
+                handleRemoveDrink={handleRemoveDrink}
             />
             <SearchButton 
                 displayState={displayState} 

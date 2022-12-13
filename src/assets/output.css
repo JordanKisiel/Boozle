@@ -839,6 +839,10 @@ video {
   border-color: rgb(204 119 119 / var(--tw-border-opacity));
 }
 
+.border-\[rgba\(201_79_106\/0\.30\)\] {
+  border-color: rgba(201 79 106/0.30);
+}
+
 .border-l-blue-100 {
   --tw-border-opacity: 1;
   border-left-color: rgb(60 80 103 / var(--tw-border-opacity));
@@ -952,6 +956,10 @@ video {
 
 .bg-\[url\(\'\.\.\/assets\/saved-drinks-arrow\.svg\'\)\] {
   background-image: url('../assets/saved-drinks-arrow.svg');
+}
+
+.bg-\[url\(\'\.\.\/assets\/remove-drink-minus\.svg\'\)\] {
+  background-image: url('../assets/remove-drink-minus.svg');
 }
 
 .from-\[\#D79472\] {
