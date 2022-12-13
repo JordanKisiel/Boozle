@@ -9,6 +9,16 @@ import filterData from '../data/filter.config.json'
 
 export default function FilterScreen(props){
 
+    const [isClearModalOpen, setIsClearModalOpen] = React.useState(false)
+
+    function handleClearModalOpen(){
+        setIsClearModalOpen(true)
+    }
+
+    function handleClearModalClose(){
+        setIsClearModalOpen(false)
+    }
+
     const filterSelectArray = filterData.filters.map((filter, index) => {
         return (
             <FilterSelect
@@ -26,10 +36,10 @@ export default function FilterScreen(props){
 
     return (
         <>
-            <InfoDisplay />
+            <InfoDisplay displayState={props.displayState} sortedResultIDs={props.sortedResultIDs} />
             { filterSelectArray }
-            <ClearFiltersButton />
-            { false && <ClearFiltersModal /> }
+            <ClearFiltersButton handleClearModalOpen={handleClearModalOpen} />
+            { isClearModalOpen && <ClearFiltersModal handleClearModalClose={handleClearModalClose} handleClearFilters={props.handleClearFilters} /> }
         </>
     )
 }

@@ -1,19 +1,36 @@
 import React from 'react'
 import SaveDrinkButton from './SaveDrinkButton'
 
-export default function Recipe(){
+export default function Recipe(props){
+
+    let ingredientString = ''
+
+    //using explict for loop because API stores all ingredients as separate values
+    //rather than in an array or other collection
+    //these values seem to max out at 15
+    for(let i = 1; i < 16; i++){
+        if(props.recipe['strIngredient' + i]){
+            ingredientString += props.recipe['strIngredient' + i]
+            
+            //look ahead to see if this is the last ingredient
+            if(props.recipe['strIngredient' + (i + 1)]){
+                ingredientString += ', '
+            }
+        }
+    }
+
     return (
         <div className=" bg-blue-600 flex flex-col items-center w-full relative mt-16 px-4 pt-16 pb-6 rounded-sm drop-shadow-xl min-h-[200%] sm:w-[30rem]">
-            <img className="absolute w-28 aspect-square rounded-full border-4 border-pink-300 -top-[4rem]" src="./src/assets/cocktail-thumb.png" alt="thumbnail picture of cocktail" />
-            <button className="absolute bg-blue-900 top-3 right-3 text-transparent text-[0px] p-5 bg-[url('../assets/choose-no-x.svg')] bg-no-repeat bg-center rounded-full">Close</button>
-            <h2 className="text-pink-300 text-xl tracking-wider mb-6">Cocktail Name</h2>
+            <img className="absolute w-28 aspect-square rounded-full border-4 border-pink-300 -top-[4rem]" src={props.recipe.strDrinkThumb} alt={`thumbnail picture of ${props.recipe.strDrink} `} />
+            <button onClick={props.handleRecipeClose} className="absolute bg-blue-900 top-3 right-3 text-transparent text-[0px] p-5 bg-[url('../assets/choose-no-x.svg')] bg-no-repeat bg-center rounded-full">Close</button>
+            <h2 className="text-pink-300 text-xl tracking-wider mb-6">{props.recipe.strDrink}</h2>
             <div className="rounded-sm overflow-hidden w-full bg-blue-300 mb-6">
                 <h3 className="bg-blue-900 text-gray-600 text-sm w-full text-center py-1.5 tracking-wider">Ingredients</h3>
-                <p className="px-4 py-3 italic text-violet-300 tracking-wider">Rum, Orange Juice, Salt...</p>
+                <p className="px-4 py-3 italic text-violet-300 tracking-wider">{ingredientString}</p>
             </div>
             <div className="rounded-sm overflow-hidden w-full bg-blue-300 mb-10">
                 <h3 className="bg-blue-900 text-gray-600 text-sm w-full text-center py-1.5 tracking-wider">Instructions</h3>
-                <p className="px-4 py-3 text-gray-300 text-sm tracking-wider sm:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod tellus ac accumsan interdum. Duis nisi eros, luctus vitae dui non, sollicitudin aliquet nibh. Vivamus rutrum bibendum elementum. Sed varius commodo faucibus. Nam eget odio mi. In dapibus quam at velit ornare, at varius ante pellentesque. Integer dignissim vulputate facilisis. Phasellus vestibulum enim eu diam accumsan viverra. Fusce quis luctus urna. Aenean eu dolor mi. Duis ornare viverra nibh, feugiat lacinia nibh dictum in. Proin faucibus, mi sit amet mollis consequat, nibh risus lacinia tortor, id elementum odio lorem nec ex. Nulla ac urna elementum, convallis urna eget, tristique est. Morbi viverra leo non mi pretium, at sagittis nulla condimentum. Vestibulum fringilla libero ac vestibulum blandit. Fusce vitae sollicitudin augue.</p>
+                <p className="px-4 py-3 text-gray-300 text-sm tracking-wider sm:text-base">{props.recipe.strInstructions}</p>
             </div>
             <SaveDrinkButton />
         </div>
