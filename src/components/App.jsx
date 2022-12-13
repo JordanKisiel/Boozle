@@ -6,13 +6,13 @@ import apiKey from '../data/apiKey.json'
 
 export default function App(){
     
-    const [displayState, setDisplayState] = React.useState('filter')
+    //api link
+    const baseUrl = 'https://www.thecocktaildb.com/api/json/v2'
+
+    const [displayState, setDisplayState] = React.useState('filter')  //available states: 'filter', 'search', 'recipe', 'saved'
     const [allSearchResults, setAllSearchResults] = React.useState([])
     const [sortedResultIDs, setSortedResultIDs] = React.useState([])
     const [recipe, setRecipe] = React.useState({})
-
-    //api link
-    const baseUrl = 'https://www.thecocktaildb.com/api/json/v2'
 
     //load filters from local storage if they exist
     const [filterState, setFilterState] = React.useState(
@@ -23,8 +23,16 @@ export default function App(){
         }
     )
 
+    //load saved drinks from local storage if they exist
+    const [savedDrinks, setSavedDrinks] = React.useState(
+        localStorage.getItem("savedDrinks") ? JSON.parse(localStorage.getItem("savedDrinks")) : []
+    )
+
     //write filters to local storage so it can be recalled if app refreshed
     localStorage.setItem("filters", JSON.stringify(filterState))
+    
+    //write saved drinks to local storage so they can be recalled later
+    localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks))
 
     function handleFilterSelect(filterName, isIngredient){
         if(isIngredient){
@@ -130,19 +138,33 @@ export default function App(){
         setDisplayState('filter')
     }
 
+    function handleSaveDrink(drink){
+        setSavedDrinks((prevArray) => [...prevArray, drink])
+    }
+
+    function handleViewSaved(){
+        setDisplayState('saved')
+    }
+
     return (
         <>
-            <Header display={displayState} />
+            <Header 
+                display={displayState} 
+                savedDrinks={savedDrinks} 
+                handleViewSaved={handleViewSaved}
+            />
             <MainDisplay 
                 displayState={displayState} 
                 filterState={filterState}
                 allSearchResults={allSearchResults} 
                 sortedResultIDs={sortedResultIDs}
                 recipe={recipe}
+                savedDrinks={savedDrinks}
                 handleFilterSelect={handleFilterSelect}
                 handleClearFilters={handleClearFilters}
                 handleRecipeDisplay={handleRecipeDisplay}
                 handleRecipeClose={handleRecipeClose}
+                handleSaveDrink={handleSaveDrink}
             />
             <SearchButton 
                 displayState={displayState} 

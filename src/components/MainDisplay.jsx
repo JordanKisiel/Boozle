@@ -24,11 +24,17 @@ export default function MainDisplay(props){
                     handleRecipeDisplay={props.handleRecipeDisplay}
                 /> 
             }
-            { props.displayState === 'saved' && <SavedResults /> }
+            { props.displayState === 'saved' && 
+                <SavedResults
+                    savedDrinks={props.savedDrinks}
+                    handleRecipeDisplay={props.handleRecipeDisplay} 
+                /> 
+            }
             { props.displayState === 'recipe' && 
                 <Recipe 
                     recipe={props.recipe} 
                     handleRecipeClose={props.handleRecipeClose}
+                    handleSaveDrink={props.handleSaveDrink}
                 /> 
             }
         </section>

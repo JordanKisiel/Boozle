@@ -9,7 +9,7 @@ export default function SearchButton(props){
         textToDisplay = 'Search Responsibly'
         bgImageClass = 'bg-[url("../assets/martini-icon.svg")]'
     }
-    else if(props.displayState === 'search' || props.displayState === 'recipe'){
+    else{
         textToDisplay = 'Back to Search'
         bgImageClass = 'bg-[url("../assets/back-arrow.svg")]'
     }

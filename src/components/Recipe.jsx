@@ -32,7 +32,7 @@ export default function Recipe(props){
                 <h3 className="bg-blue-900 text-gray-600 text-sm w-full text-center py-1.5 tracking-wider">Instructions</h3>
                 <p className="px-4 py-3 text-gray-300 text-sm tracking-wider sm:text-base">{props.recipe.strInstructions}</p>
             </div>
-            <SaveDrinkButton />
+            <SaveDrinkButton handleSaveDrink={props.handleSaveDrink} recipe={props.recipe} />
         </div>
     )
 }

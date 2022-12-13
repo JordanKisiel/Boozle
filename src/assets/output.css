@@ -1005,6 +1005,14 @@ video {
   background-position: center right 0.1rem;
 }
 
+.bg-\[center_right_3rem\] {
+  background-position: center right 3rem;
+}
+
+.bg-\[center_right_2rem\] {
+  background-position: center right 2rem;
+}
+
 .bg-no-repeat {
   background-repeat: no-repeat;
 }
@@ -1169,6 +1177,14 @@ video {
 
 .pl-1 {
   padding-left: 0.25rem;
+}
+
+.pr-10 {
+  padding-right: 2.5rem;
+}
+
+.pr-6 {
+  padding-right: 1.5rem;
 }
 
 .text-left {
