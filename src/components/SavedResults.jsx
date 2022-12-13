@@ -1,4 +1,5 @@
 import React from 'react'
+import InfoDisplay from './InfoDisplay'
 import ResultButton from './ResultButton'
 
 export default function SavedResults(props){

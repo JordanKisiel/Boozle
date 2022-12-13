@@ -36,7 +36,10 @@ export default function FilterScreen(props){
 
     return (
         <>
-            <InfoDisplay displayState={props.displayState} sortedResultIDs={props.sortedResultIDs} />
+            <InfoDisplay 
+                displayState={props.displayState} 
+                sortedResultIDs={props.sortedResultIDs} 
+            />
             { filterSelectArray }
             <ClearFiltersButton handleClearModalOpen={handleClearModalOpen} />
             { isClearModalOpen && <ClearFiltersModal handleClearModalClose={handleClearModalClose} handleClearFilters={props.handleClearFilters} /> }

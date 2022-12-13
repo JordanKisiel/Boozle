@@ -9,7 +9,10 @@ export default function App(){
     //api link
     const baseUrl = 'https://www.thecocktaildb.com/api/json/v2'
 
-    const [displayState, setDisplayState] = React.useState('filter')  //available states: 'filter', 'search', 'recipe', 'saved'
+    //displayState is array that holds history of states
+    //this will allow the app to navigate back to previous states more easily
+    //available states: 'filter', 'search', 'recipe', 'saved'
+    const [displayState, setDisplayState] = React.useState(['filter'])  
     const [allSearchResults, setAllSearchResults] = React.useState([])
     const [sortedResultIDs, setSortedResultIDs] = React.useState([])
     const [recipe, setRecipe] = React.useState({})
@@ -101,7 +104,7 @@ export default function App(){
 
                     setSortedResultIDs(sortedIDs)
 
-                    setDisplayState('search')
+                    setDisplayState((prevArray) => [...prevArray, 'search'])
                 })
         }
         else{
@@ -112,7 +115,7 @@ export default function App(){
                 .then(data => {
                     setAllSearchResults(data.drinks)
                     setSortedResultIDs(data.drinks.map(drink => drink.idDrink))
-                    setDisplayState('search')
+                    setDisplayState((prevArray) => [...prevArray, 'search'])
                 })
         }
 
@@ -126,16 +129,16 @@ export default function App(){
                 
                 setRecipe(data.drinks[0])
 
-                setDisplayState('recipe')
+                setDisplayState((prevArray) => [...prevArray, 'recipe'])
             })
     }
 
     function handleRecipeClose(){
-        setDisplayState('search')
+        setDisplayState((prevArray) => prevArray.slice(0, -1))
     }
 
     function handleFilterDisplay(){
-        setDisplayState('filter')
+        setDisplayState((prevArray) => [...prevArray, 'filter'])
     }
 
     function handleSaveDrink(drink){
@@ -143,13 +146,13 @@ export default function App(){
     }
 
     function handleViewSaved(){
-        setDisplayState('saved')
+        setDisplayState((prevArray) => [...prevArray, 'saved'])
     }
 
     return (
         <>
             <Header 
-                display={displayState} 
+                displayState={displayState} 
                 savedDrinks={savedDrinks} 
                 handleViewSaved={handleViewSaved}
             />

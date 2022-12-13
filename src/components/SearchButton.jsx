@@ -2,10 +2,12 @@ import React from 'react'
 
 export default function SearchButton(props){
 
+    const currentDisplay = props.displayState[props.displayState.length-1]
+
     let textToDisplay = ''
     let bgImageClass = ''
 
-    if(props.displayState === 'filter'){
+    if(currentDisplay === 'filter'){
         textToDisplay = 'Search Responsibly'
         bgImageClass = 'bg-[url("../assets/martini-icon.svg")]'
     }
@@ -18,10 +20,10 @@ export default function SearchButton(props){
         <div className="flex justify-center fixed left-0 right-0 bottom-0 bg-blue-600 p-4 border-t-2 border-[rgba(255_255_255/0.03)] sm:px-12">
             <button 
                 onClick={()=>{
-                    if(props.displayState === 'filter'){
+                    if(currentDisplay === 'filter'){
                         props.handleSearch()
                     }
-                    else if(props.displayState === 'search' || props.displayState === 'recipe'){
+                    else{
                         props.handleFilterDisplay()
                     }
                 }} 

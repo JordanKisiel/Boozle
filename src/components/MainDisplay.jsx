@@ -6,9 +6,11 @@ import SavedResults from './SavedResults'
 
 export default function MainDisplay(props){
 
+    const currentDisplay = props.displayState[props.displayState.length-1]
+
     return (
         <section id="main-display" className="bg-[#0B0B0B] flex flex-col gap-6 items-center px-4 pt-32 pb-32 overflow-scroll -z-10 min-h-screen sm:px-12">
-            { props.displayState === 'filter' && 
+            { currentDisplay === 'filter' && 
                 <FilterScreen 
                     filterState={props.filterState}
                     displayState={props.displayState} 
@@ -16,7 +18,7 @@ export default function MainDisplay(props){
                     handleClearFilters={props.handleClearFilters} 
                 /> 
             }
-            { props.displayState === 'search' &&
+            { currentDisplay === 'search' &&
                 <SearchResults 
                     allSearchResults={props.allSearchResults} 
                     sortedResultIDs={props.sortedResultIDs} 
@@ -24,13 +26,14 @@ export default function MainDisplay(props){
                     handleRecipeDisplay={props.handleRecipeDisplay}
                 /> 
             }
-            { props.displayState === 'saved' && 
+            { currentDisplay === 'saved' && 
                 <SavedResults
                     savedDrinks={props.savedDrinks}
-                    handleRecipeDisplay={props.handleRecipeDisplay} 
+                    handleRecipeDisplay={props.handleRecipeDisplay}
+                    displayState={props.displayState} 
                 /> 
             }
-            { props.displayState === 'recipe' && 
+            { currentDisplay === 'recipe' && 
                 <Recipe 
                     recipe={props.recipe} 
                     handleRecipeClose={props.handleRecipeClose}
