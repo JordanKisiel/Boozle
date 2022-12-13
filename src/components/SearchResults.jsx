@@ -6,10 +6,12 @@ export default function SearchResults(props){
 
     const maxNumToDisplay = 50
 
+
     const resultBtnArray = props.sortedResultIDs.map((id, index) => {
         const matchingDrink = props.allSearchResults.find((drink) => {
             return drink.idDrink === id
         })
+
 
         return (
             <ResultButton 

@@ -626,6 +626,10 @@ video {
   margin-right: 1.25rem;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
 .inline-block {
   display: inline-block;
 }
@@ -834,13 +838,13 @@ video {
   border-color: rgb(201 79 106 / var(--tw-border-opacity));
 }
 
+.border-\[rgba\(201_79_106\/0\.30\)\] {
+  border-color: rgba(201 79 106/0.30);
+}
+
 .border-\[\#cc7777\] {
   --tw-border-opacity: 1;
   border-color: rgb(204 119 119 / var(--tw-border-opacity));
-}
-
-.border-\[rgba\(201_79_106\/0\.30\)\] {
-  border-color: rgba(201 79 106/0.30);
 }
 
 .border-l-blue-100 {
@@ -942,6 +946,10 @@ video {
   background-image: url('../assets/add-drink-plus.svg');
 }
 
+.bg-\[url\(\'\.\.\/assets\/remove-drink-minus\.svg\'\)\] {
+  background-image: url('../assets/remove-drink-minus.svg');
+}
+
 .bg-\[url\(\"\.\.\/assets\/martini-icon\.svg\"\)\] {
   background-image: url("../assets/martini-icon.svg");
 }
@@ -956,10 +964,6 @@ video {
 
 .bg-\[url\(\'\.\.\/assets\/saved-drinks-arrow\.svg\'\)\] {
   background-image: url('../assets/saved-drinks-arrow.svg');
-}
-
-.bg-\[url\(\'\.\.\/assets\/remove-drink-minus\.svg\'\)\] {
-  background-image: url('../assets/remove-drink-minus.svg');
 }
 
 .from-\[\#D79472\] {
@@ -1005,20 +1009,16 @@ video {
   background-position: center right 5rem;
 }
 
-.bg-\[center_left_2rem\] {
-  background-position: center left 2rem;
-}
-
-.bg-\[center_right_0\.1rem\] {
-  background-position: center right 0.1rem;
+.bg-\[center_right_2rem\] {
+  background-position: center right 2rem;
 }
 
 .bg-\[center_right_3rem\] {
   background-position: center right 3rem;
 }
 
-.bg-\[center_right_2rem\] {
-  background-position: center right 2rem;
+.bg-\[center_right_0\.1rem\] {
+  background-position: center right 0.1rem;
 }
 
 .bg-no-repeat {
@@ -1147,20 +1147,12 @@ video {
   padding-top: 4rem;
 }
 
-.pl-10 {
-  padding-left: 2.5rem;
-}
-
-.pt-3\.5 {
-  padding-top: 0.875rem;
+.pt-3 {
+  padding-top: 0.75rem;
 }
 
 .pb-3 {
   padding-bottom: 0.75rem;
-}
-
-.pt-3 {
-  padding-top: 0.75rem;
 }
 
 .pl-\[3\.25rem\] {
@@ -1185,14 +1177,6 @@ video {
 
 .pl-1 {
   padding-left: 0.25rem;
-}
-
-.pr-10 {
-  padding-right: 2.5rem;
-}
-
-.pr-6 {
-  padding-right: 1.5rem;
 }
 
 .text-left {

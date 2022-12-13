@@ -9,7 +9,10 @@ export default function InfoDisplay(props){
         textToDisplay = 'What would you like to use?'
     }
     else if(currentDisplay === 'search'){
-        if(props.sortedResultIDs.length < 50 && props.filterState.ingredients.length !== 0){
+        if(props.sortedResultIDs.length === 0 && props.filterState.ingredients !== 0){
+            textToDisplay = "Unfortunately we couldn't find a drink. Try using less or different filters!"
+        }
+        else if(props.sortedResultIDs.length < 50 && props.filterState.ingredients.length !== 0){
             textToDisplay = `Top ${props.sortedResultIDs.length} results`
         }
         else if(props.filterState.ingredients.length === 0){

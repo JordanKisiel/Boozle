@@ -102,10 +102,6 @@ export default function App(){
                             })
 
                             //filter out any results that include a dislike in their ingredients
-                            //TODO:
-                            // -I have to create separate fetch using each dislike
-                            //  -join results together
-                            //  -then compare that to the search results and remove any matches
 
                             const dislikeIDs = dislikeArray.map(drink => drink.idDrink)
 
@@ -124,10 +120,16 @@ export default function App(){
                                 occurences[id] = occurences[id] ? occurences[id] + 1 : 1
                             }
 
+                            //removed undefined occurences
+                            //represents results that didn't find a drink
+                            delete occurences.undefined
+
                             //sort ids by number of occurences
                             const sortedIDs = Object.keys(occurences).sort((a, b) => {
                                 return occurences[b] - occurences[a]
                             })
+
+                            //console.log(sortedIDs)
 
                             setSortedResultIDs(sortedIDs)
 

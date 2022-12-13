@@ -26,7 +26,7 @@ export default function MoreFiltersModal(props){
                         { filterBtnArray }
                     </div>
                 </div>
-                <button onClick={props.handleModalClose} className="bg-blue-300 text-gray-300 font-bold w-full rounded-sm py-2 border-2 border-[rgba(255_255_255/0.06)] uppercase tracking-wider justify-self-end drop-shadow-xl">Done</button>
+                <button onClick={props.handleModalClose} className="bg-blue-300 text-gray-300 font-bold w-full rounded-sm py-2 border-2 border-[rgba(255_255_255/0.06)] uppercase tracking-wider justify-self-end drop-shadow-xl mt-6">Done</button>
             </div>
         </div>
     )
