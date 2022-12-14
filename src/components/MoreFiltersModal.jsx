@@ -3,8 +3,9 @@ import FilterButton from './FilterButton'
 
 export default function MoreFiltersModal(props){
 
+    const sortedIngredients = props.otherIngredients.slice().sort()
 
-    const filterBtnArray = props.otherIngredients.map((ingredient, index) => {
+    const filterBtnArray = sortedIngredients.map((ingredient, index) => {
         return (
             <FilterButton
                 key={index} 

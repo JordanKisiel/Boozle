@@ -1,11 +1,13 @@
 import React from 'react'
 import ResultButton from './ResultButton'
 import InfoDisplay from './InfoDisplay'
+import { motion, AnimatePresence } from "framer-motion"
 
-export default function SearchResults(props){
+const MotionResultButton = motion(ResultButton)
+
+const SearchResults = React.forwardRef((props, ref) => {
 
     const maxNumToDisplay = 50
-
 
     const resultBtnArray = props.sortedResultIDs.map((id, index) => {
         const matchingDrink = props.allSearchResults.find((drink) => {
@@ -14,12 +16,13 @@ export default function SearchResults(props){
 
 
         return (
-            <ResultButton 
+            <MotionResultButton 
                 key={index} 
                 name={matchingDrink.strDrink} 
                 image={matchingDrink.strDrinkThumb}
                 id={matchingDrink.idDrink} 
-                handleRecipeDisplay={props.handleRecipeDisplay}  
+                handleRecipeDisplay={props.handleRecipeDisplay}
+                variants={props.childAnim}  
             />
         )
     })
@@ -27,7 +30,11 @@ export default function SearchResults(props){
     return (
         <>
             <InfoDisplay displayState={props.displayState} sortedResultIDs={props.sortedResultIDs} filterState={props.filterState} />
-            { resultBtnArray.slice(0, maxNumToDisplay + 1) }
+            <div ref={ref} className="w-full flex flex-col gap-5">
+                { resultBtnArray.slice(0, maxNumToDisplay + 1) }
+            </div>
         </>
     )
-}
+})
+
+export default SearchResults

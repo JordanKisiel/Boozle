@@ -3,8 +3,41 @@ import SearchResults from './SearchResults'
 import Recipe from './Recipe'
 import FilterScreen from './FilterScreen'
 import SavedResults from './SavedResults'
+import { motion, AnimatePresence } from "framer-motion"
+
+//custom Framer Motion components
+const MotionSavedResults = motion(SavedResults)
+const MotionSearchResults = motion(SearchResults)
 
 export default function MainDisplay(props){
+
+    //animation data
+    const containerAnim = {
+        hidden: { 
+            opacity: 0,
+        },
+        show: {
+            opacity: 1,
+            transition: {
+                ease: "easeIn",
+                duration: 0.35,
+                staggerChildren: 0.1
+            }
+        }
+    }
+
+    const childAnim = {
+        hidden: {
+            x: 100
+        },
+        show: {
+            x: 0,
+            transition: {
+                ease: "easeInOut",
+                duration: 0.35
+            }
+        }
+    }
 
     const currentDisplay = props.displayState[props.displayState.length-1]
 
@@ -19,22 +52,33 @@ export default function MainDisplay(props){
                 /> 
             }
             { currentDisplay === 'search' &&
-                <SearchResults 
+                <MotionSearchResults 
                     allSearchResults={props.allSearchResults} 
                     sortedResultIDs={props.sortedResultIDs} 
                     displayState={props.displayState}
                     handleRecipeDisplay={props.handleRecipeDisplay}
                     filterState={props.filterState}
+                    variants={containerAnim}
+                    initial="hidden"
+                    animate="show"
+                    childAnim={childAnim}
                 /> 
             }
-            { currentDisplay === 'saved' && 
-                <SavedResults
-                    savedDrinks={props.savedDrinks}
-                    handleRecipeDisplay={props.handleRecipeDisplay}
-                    displayState={props.displayState}
-                    sortedResultIDs={props.sortedResultIDs} 
-                /> 
-            }
+            <AnimatePresence>
+                { currentDisplay === 'saved' &&
+                    <MotionSavedResults
+                        savedDrinks={props.savedDrinks}
+                        handleRecipeDisplay={props.handleRecipeDisplay}
+                        displayState={props.displayState}
+                        sortedResultIDs={props.sortedResultIDs}
+                        variants={containerAnim}
+                        initial="hidden"
+                        animate="show"
+                        childAnim={childAnim}
+                        className="w-full flex flex-col gap-3"
+                    />
+                }
+            </AnimatePresence>
             { currentDisplay === 'recipe' && 
                 <Recipe 
                     recipe={props.recipe}
