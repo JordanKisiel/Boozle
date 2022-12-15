@@ -90,6 +90,7 @@ export default function MainDisplay(props){
                         allSearchResults={props.allSearchResults} 
                         sortedResultIDs={props.sortedResultIDs} 
                         displayState={props.displayState}
+                        errorState={props.errorState}
                         handleRecipeDisplay={props.handleRecipeDisplay}
                         filterState={props.filterState}
                         variants={resultsContainerAnim}

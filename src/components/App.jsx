@@ -16,6 +16,7 @@ export default function App(){
     const [allSearchResults, setAllSearchResults] = React.useState([])
     const [sortedResultIDs, setSortedResultIDs] = React.useState([])
     const [recipe, setRecipe] = React.useState({})
+    const [errorState, setErrorState] = React.useState(false)
 
     //load filters from local storage if they exist
     const [filterState, setFilterState] = React.useState(
@@ -79,6 +80,8 @@ export default function App(){
             Promise.all(fetchArray)
                 .then(dataArray => {
 
+                    setErrorState(false)
+
                     const dislikeFetchArray = filterState.dislikes.map((ingredient) => {
                         return fetch(`${baseUrl}/${apiKey.apiKey}/filter.php?i=${ingredient}`)
                                 .then(res => res.json())
@@ -86,6 +89,8 @@ export default function App(){
 
                     Promise.all(dislikeFetchArray)
                         .then(dislikeDataArray => {
+                            
+                            setErrorState(false)
 
                             //join all request results into one array
                             let allResultsArray = []
@@ -135,6 +140,18 @@ export default function App(){
 
                             setDisplayState((prevArray) => [...prevArray, 'search'])
                         })
+                        .catch(error => {
+                            if(error){
+                                setErrorState(true)
+                            }
+                            setDisplayState((prevArray) => [...prevArray, 'search'])
+                        })
+                })
+                .catch(error => {
+                    if(error){
+                        setErrorState(true)
+                    }
+                    setDisplayState((prevArray) => [...prevArray, 'search'])
                 })
 
         }
@@ -144,8 +161,15 @@ export default function App(){
             fetch(`${baseUrl}/${apiKey.apiKey}/popular.php`)
                 .then(res => res.json())
                 .then(data => {
+                    setErrorState(false)
                     setAllSearchResults(data.drinks)
                     setSortedResultIDs(data.drinks.map(drink => drink.idDrink))
+                    setDisplayState((prevArray) => [...prevArray, 'search'])
+                })
+                .catch(error => {
+                    if(error){
+                        setErrorState(true)
+                    }
                     setDisplayState((prevArray) => [...prevArray, 'search'])
                 })
         }           
@@ -206,6 +230,7 @@ export default function App(){
                 sortedResultIDs={sortedResultIDs}
                 recipe={recipe}
                 savedDrinks={savedDrinks}
+                errorState={errorState}
                 handleFilterSelect={handleFilterSelect}
                 handleClearFilters={handleClearFilters}
                 handleRecipeDisplay={handleRecipeDisplay}

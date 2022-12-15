@@ -19,7 +19,7 @@ const SearchResults = React.forwardRef((props, ref) => {
             <MotionResultButton 
                 key={index} 
                 name={matchingDrink.strDrink} 
-                image={matchingDrink.strDrinkThumb}
+                image={matchingDrink.strDrinkThumb ? matchingDrink.strDrinkThumb : './src/assets/cocktail-image-placeholder.png'}
                 id={matchingDrink.idDrink} 
                 handleRecipeDisplay={props.handleRecipeDisplay}
                 variants={props.childAnim}  
@@ -29,7 +29,12 @@ const SearchResults = React.forwardRef((props, ref) => {
 
     return (
         <>
-            <InfoDisplay displayState={props.displayState} sortedResultIDs={props.sortedResultIDs} filterState={props.filterState} />
+            <InfoDisplay 
+                displayState={props.displayState} 
+                sortedResultIDs={props.sortedResultIDs} 
+                filterState={props.filterState} 
+                errorState={props.errorState}
+            />
             <div ref={ref} className="w-full flex flex-col items-center gap-5">
                 { resultBtnArray.slice(0, maxNumToDisplay + 1) }
             </div>
