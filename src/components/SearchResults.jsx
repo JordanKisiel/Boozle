@@ -30,7 +30,7 @@ const SearchResults = React.forwardRef((props, ref) => {
     return (
         <>
             <InfoDisplay displayState={props.displayState} sortedResultIDs={props.sortedResultIDs} filterState={props.filterState} />
-            <div ref={ref} className="w-full flex flex-col gap-5">
+            <div ref={ref} className="w-full flex flex-col items-center gap-5">
                 { resultBtnArray.slice(0, maxNumToDisplay + 1) }
             </div>
         </>

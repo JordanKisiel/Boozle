@@ -4,10 +4,14 @@ import ClearFiltersModal from './ClearFiltersModal'
 import FilterSelect from './FilterSelect'
 import InfoDisplay from './InfoDisplay'
 import filterData from '../data/filter.config.json'
+import { motion, AnimatePresence } from "framer-motion"
 
+//custom Framer Motion components
+const MotionInfoDisplay = motion(InfoDisplay)
+const MotionFilterSelect = motion(FilterSelect)
+const MotionClearFiltersButton = motion(ClearFiltersButton)
 
-
-export default function FilterScreen(props){
+const FilterScreen = React.forwardRef((props, ref) => {
 
     const [isClearModalOpen, setIsClearModalOpen] = React.useState(false)
 
@@ -21,7 +25,7 @@ export default function FilterScreen(props){
 
     const filterSelectArray = filterData.filters.map((filter, index) => {
         return (
-            <FilterSelect
+            <MotionFilterSelect
                 key={index} 
                 title={filter.title}  
                 titleColor={filter.titleColor}
@@ -29,20 +33,26 @@ export default function FilterScreen(props){
                 defaultIngredients={filter.defaultIngredients}
                 otherIngredients={filter.otherIngredients}
                 filterState={props.filterState}
-                handleFilterSelect={props.handleFilterSelect} 
+                handleFilterSelect={props.handleFilterSelect}
+                variants={props.childAnim} 
             />
         )
     })
 
     return (
-        <>
-            <InfoDisplay 
+        <div ref={ref} className="flex flex-col gap-6 items-center w-full">
+            <MotionInfoDisplay 
                 displayState={props.displayState} 
                 sortedResultIDs={props.sortedResultIDs} 
+                variants={props.childAnim}
             />
             { filterSelectArray }
-            <ClearFiltersButton handleClearModalOpen={handleClearModalOpen} />
-            { isClearModalOpen && <ClearFiltersModal handleClearModalClose={handleClearModalClose} handleClearFilters={props.handleClearFilters} /> }
-        </>
+            <MotionClearFiltersButton handleClearModalOpen={handleClearModalOpen} variants={props.childAnim} />
+            <AnimatePresence>
+                { isClearModalOpen && <ClearFiltersModal handleClearModalClose={handleClearModalClose} handleClearFilters={props.handleClearFilters} /> }
+            </AnimatePresence>
+        </div>
     )
-}
+})
+
+export default FilterScreen

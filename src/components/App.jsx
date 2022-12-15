@@ -197,6 +197,7 @@ export default function App(){
                 displayState={displayState} 
                 savedDrinks={savedDrinks} 
                 handleViewSaved={handleViewSaved}
+                handleFilterDisplay={handleFilterDisplay}
             />
             <MainDisplay 
                 displayState={displayState} 

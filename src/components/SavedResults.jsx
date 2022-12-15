@@ -16,13 +16,13 @@ const SavedResults = React.forwardRef((props, ref) => {
                 image={drink.strDrinkThumb}
                 id={drink.idDrink} 
                 handleRecipeDisplay={props.handleRecipeDisplay}
-                
+                variants={props.childAnim}
             />
         )
     })
 
     return (
-        <div ref={ref} className="w-full flex flex-col gap-5">
+        <div ref={ref} className="w-full flex flex-col items-center gap-5">
             { (props.savedDrinks.length === 0) &&
                 <InfoDisplay displayState={props.displayState} sortedResultsIDs={props.sortedResultsIDs} />
             }

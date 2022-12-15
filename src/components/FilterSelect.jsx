@@ -5,7 +5,7 @@ import MoreFiltersModal from './MoreFiltersModal'
 import { motion, AnimatePresence } from "framer-motion"
 
 
-export default function FilterSelect(props){
+const FilterSelect = React.forwardRef((props, ref) => {
     
     const [isOpen, setIsOpen] = React.useState(false)
     const [isModalOpen, setIsModalOpen] = React.useState(false)
@@ -45,7 +45,7 @@ export default function FilterSelect(props){
 
     return (
         <>
-            <div className="w-full rounded-sm overflow-hidden drop-shadow-xl md:w-3/4 lg:w-[48rem]">
+            <div ref={ref} className="w-full rounded-sm overflow-hidden drop-shadow-xl md:w-[25rem] lg:w-[30rem]">
                 <DiscloseButton 
                     title={props.title} 
                     titleColor={props.titleColor}
@@ -68,20 +68,34 @@ export default function FilterSelect(props){
                                 duration: 0.7,
                                 ease: [0.04, 0.62, 0.23, 0.98]
                             }} 
-                            className="bg-blue-300">
-                            <div className="px-5 py-5 space-y-8">
-                                <div className="flex flex-wrap gap-4">
+                            className="bg-blue-300 w-full">
+                            <div className="px-5 py-5 space-y-8 w-full">
+                                <div className="flex flex-wrap gap-4 w-full">
                                     { filterBtnArray }
                                 </div>
-                                <div className="border-t-2 border-[rgba(255_255_255/0.08)] pt-4 pb-0 flex">
-                                    <button onClick={handleModalOpen} className="bg-blue-300 text-gray-300 font-bold w-full rounded-sm py-2 border-2 border-[rgba(255_255_255/0.06)] uppercase tracking-wider bg-[url(../assets/filter-plus.svg)]  bg-no-repeat bg-[center_right_5rem] drop-shadow-xl">More Options</button>
+                                <div className="border-t-2 border-[rgba(255_255_255/0.08)] pt-4 pb-0 flex flex-row justify-center w-full">
+                                    <button onClick={handleModalOpen} className="bg-blue-300 text-gray-300 font-bold w-full rounded-sm py-2 border-2 border-[rgba(255_255_255/0.06)] uppercase tracking-wider bg-[url(../assets/filter-plus.svg)]  bg-no-repeat bg-[center_right_3rem] drop-shadow-xl max-w-[20rem]">More Options</button>
                                 </div>
                             </div>
                         </motion.div>
                     )}
                 </AnimatePresence>
             </div>
-            {isModalOpen && <MoreFiltersModal otherIngredients={props.otherIngredients} bgColor={props.bgColor} titleColor={props.titleColor} filterCategory={props.title} filterState={props.filterState} handleFilterSelect={props.handleFilterSelect} handleModalClose={handleModalClose} />}
+            <AnimatePresence>
+                {isModalOpen && 
+                    <MoreFiltersModal 
+                        otherIngredients={props.otherIngredients} 
+                        bgColor={props.bgColor} 
+                        titleColor={props.titleColor} 
+                        filterCategory={props.title} 
+                        filterState={props.filterState} 
+                        handleFilterSelect={props.handleFilterSelect} 
+                        handleModalClose={handleModalClose} 
+                    />
+                }
+            </AnimatePresence>
         </>
     )
-}
+})
+
+export default FilterSelect

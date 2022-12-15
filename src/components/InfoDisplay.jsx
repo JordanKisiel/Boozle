@@ -1,12 +1,14 @@
 import React from 'react'
+import { motion, AnimatePresence } from "framer-motion"
 
-export default function InfoDisplay(props){
+
+const InfoDisplay = React.forwardRef((props, ref) => {
 
     const currentDisplay = props.displayState[props.displayState.length-1]
 
     let textToDisplay = ''
     if(currentDisplay === 'filter'){
-        textToDisplay = 'What would you like to use?'
+        textToDisplay = "Let's find a drink! What would you like to use?"
     }
     else if(currentDisplay === 'search'){
         if(props.sortedResultIDs.length === 0 && props.filterState.ingredients !== 0){
@@ -27,8 +29,10 @@ export default function InfoDisplay(props){
     }
 
     return (
-        <h1 className="text-center font-normal text-2xl text-gray-300 w-3/5 tracking-widest md:my-6">
+        <h1 ref={ref} className="text-center font-normal text-2xl text-gray-300 w-3/5 tracking-widest md:my-6">
             {textToDisplay}
         </h1>
     )
-}
+})
+
+export default InfoDisplay

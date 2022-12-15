@@ -18,7 +18,7 @@ export default function SaveDrinkButton(props){
                     props.handleRemoveDrink(props.recipe)
                 }
             }} 
-            className={`bg-blue-300 text-pink-300 uppercase font-bold rounded-sm tracking-widest pr-4 pt-3 pb-3 w-full border-2 ${borderColorClass} drop-shadow-xl ${bgImageClass} bg-no-repeat ${bgPosClass}`}>
+            className={`bg-blue-300 text-pink-300 uppercase font-bold rounded-sm tracking-widest pr-4 pt-3 pb-3 w-full border-2 ${borderColorClass} drop-shadow-xl ${bgImageClass} bg-no-repeat ${bgPosClass} max-w-[20rem]`}>
                 {!isAlreadySaved ? 'Save Drink for Later' : 'Remove Saved Drink'}
         </button>
     )
