@@ -9,11 +9,11 @@ export default function SearchButton(props){
 
     if(currentDisplay === 'filter'){
         textToDisplay = 'Search Responsibly'
-        bgImageClass = 'bg-[url("../assets/martini-icon.svg")]'
+        bgImageClass = 'bg-[url("/martini-icon.svg")]'
     }
     else{
         textToDisplay = 'Back to Search'
-        bgImageClass = 'bg-[url("../assets/back-arrow.svg")]'
+        bgImageClass = 'bg-[url("/back-arrow.svg")]'
     }
 
     return (

@@ -4,7 +4,7 @@ export default function SaveDrinkButton(props){
 
     const isAlreadySaved = props.savedDrinks.some((savedDrink) => savedDrink.idDrink === props.recipe.idDrink)
 
-    const bgImageClass = !isAlreadySaved ? "bg-[url('../assets/add-drink-plus.svg')]" : "bg-[url('../assets/remove-drink-minus.svg')]"
+    const bgImageClass = !isAlreadySaved ? "bg-[url('/add-drink-plus.svg')]" : "bg-[url('/remove-drink-minus.svg')]"
     const borderColorClass = !isAlreadySaved ? "border-[rgba(255_255_255/0.06)]" : "border-[rgba(201_79_106/0.30)]"
     const bgPosClass = !isAlreadySaved ? "bg-[center_right_2rem]" : "bg-[center_right_3rem]"
 

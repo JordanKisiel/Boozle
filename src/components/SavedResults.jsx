@@ -13,7 +13,7 @@ const SavedResults = React.forwardRef((props, ref) => {
             <MotionResultButton 
                 key={index} 
                 name={drink.strDrink} 
-                image={drink.strDrinkThumb ? drink.strDrinkThumb : './src/assets/cocktail-image-placeholder.png'}
+                image={drink.strDrinkThumb ? drink.strDrinkThumb : '/cocktail-image-placeholder.png'}
                 id={drink.idDrink} 
                 handleRecipeDisplay={props.handleRecipeDisplay}
                 variants={props.childAnim}

@@ -19,7 +19,7 @@ const SearchResults = React.forwardRef((props, ref) => {
             <MotionResultButton 
                 key={index} 
                 name={matchingDrink.strDrink} 
-                image={matchingDrink.strDrinkThumb ? matchingDrink.strDrinkThumb : './src/assets/cocktail-image-placeholder.png'}
+                image={matchingDrink.strDrinkThumb ? matchingDrink.strDrinkThumb : '/cocktail-image-placeholder.png'}
                 id={matchingDrink.idDrink} 
                 handleRecipeDisplay={props.handleRecipeDisplay}
                 variants={props.childAnim}  

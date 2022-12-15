@@ -57,8 +57,8 @@ export default function ClearFiltersModal(props){
                         props.handleClearFilters() 
                         props.handleClearModalClose()
                     }}
-                    className="bg-blue-600 text-gray-300 uppercase font-bold w-3/5 py-3 text-lg tracking-wider bg-[url('../assets/check-mark.svg')] bg-no-repeat bg-[center_left_1.1rem]">Yes</button>
-                <button onClick={props.handleClearModalClose} className="bg-blue-600 text-gray-300 uppercase font-bold w-3/5 py-3 text-lg tracking-wider bg-[url('../assets/choose-no-x.svg')] bg-no-repeat bg-[center_left_1.1rem]">No</button>
+                    className="bg-blue-600 text-gray-300 uppercase font-bold w-3/5 py-3 text-lg tracking-wider bg-[url('/check-mark.svg')] bg-no-repeat bg-[center_left_1.1rem]">Yes</button>
+                <button onClick={props.handleClearModalClose} className="bg-blue-600 text-gray-300 uppercase font-bold w-3/5 py-3 text-lg tracking-wider bg-[url('/choose-no-x.svg')] bg-no-repeat bg-[center_left_1.1rem]">No</button>
             </motion.div>
         </motion.div>
     )

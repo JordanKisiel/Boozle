@@ -74,7 +74,7 @@ const FilterSelect = React.forwardRef((props, ref) => {
                                     { filterBtnArray }
                                 </div>
                                 <div className="border-t-2 border-[rgba(255_255_255/0.08)] pt-4 pb-0 flex flex-row justify-center w-full">
-                                    <button onClick={handleModalOpen} className="bg-blue-300 text-gray-300 font-bold w-full rounded-sm py-2 border-2 border-[rgba(255_255_255/0.06)] uppercase tracking-wider bg-[url(../assets/filter-plus.svg)]  bg-no-repeat bg-[center_right_3rem] drop-shadow-xl max-w-[20rem]">More Options</button>
+                                    <button onClick={handleModalOpen} className="bg-blue-300 text-gray-300 font-bold w-full rounded-sm py-2 border-2 border-[rgba(255_255_255/0.06)] uppercase tracking-wider bg-[url(/filter-plus.svg)]  bg-no-repeat bg-[center_right_3rem] drop-shadow-xl max-w-[20rem]">More Options</button>
                                 </div>
                             </div>
                         </motion.div>

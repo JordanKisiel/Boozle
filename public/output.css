@@ -914,64 +914,64 @@ video {
   background-color: rgb(99 99 99 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\'\/clear-all-x\.svg\'\)\] {
-  background-image: url('/clear-all-x.svg');
+.bg-\[url\(\'\.\.\/assets\/clear-all-x\.svg\'\)\] {
+  background-image: url('../assets/clear-all-x.svg');
 }
 
-.bg-\[url\(\'\/check-mark\.svg\'\)\] {
-  background-image: url('/check-mark.svg');
+.bg-\[url\(\'\.\.\/assets\/check-mark\.svg\'\)\] {
+  background-image: url('../assets/check-mark.svg');
 }
 
-.bg-\[url\(\'\/choose-no-x\.svg\'\)\] {
-  background-image: url('/choose-no-x.svg');
+.bg-\[url\(\'\.\.\/assets\/choose-no-x\.svg\'\)\] {
+  background-image: url('../assets/choose-no-x.svg');
 }
 
-.bg-\[url\(\/up-arrow\.svg\)\] {
-  background-image: url(/up-arrow.svg);
+.bg-\[url\(\.\.\/assets\/up-arrow\.svg\)\] {
+  background-image: url(../assets/up-arrow.svg);
 }
 
-.bg-\[url\(\/down-arrow\.svg\)\] {
-  background-image: url(/down-arrow.svg);
+.bg-\[url\(\.\.\/assets\/down-arrow\.svg\)\] {
+  background-image: url(../assets/down-arrow.svg);
 }
 
-.bg-\[url\(\/filter-minus\.svg\)\] {
-  background-image: url(/filter-minus.svg);
+.bg-\[url\(\.\.\/assets\/filter-minus\.svg\)\] {
+  background-image: url(../assets/filter-minus.svg);
 }
 
-.bg-\[url\(\/filter-plus\.svg\)\] {
-  background-image: url(/filter-plus.svg);
+.bg-\[url\(\.\.\/assets\/filter-plus\.svg\)\] {
+  background-image: url(../assets/filter-plus.svg);
 }
 
-.bg-\[url\(\'\/filter-plus\.svg\'\)\] {
-  background-image: url('/filter-plus.svg');
+.bg-\[url\(\'\.\.\/assets\/filter-plus\.svg\'\)\] {
+  background-image: url('../assets/filter-plus.svg');
 }
 
-.bg-\[url\(\'\/cocktail-thumb\.png\'\)\] {
-  background-image: url('/cocktail-thumb.png');
+.bg-\[url\(\'\.\.\/assets\/cocktail-thumb\.png\'\)\] {
+  background-image: url('../assets/cocktail-thumb.png');
 }
 
-.bg-\[url\(\'\/add-drink-plus\.svg\'\)\] {
-  background-image: url('/add-drink-plus.svg');
+.bg-\[url\(\'\.\.\/assets\/add-drink-plus\.svg\'\)\] {
+  background-image: url('../assets/add-drink-plus.svg');
 }
 
-.bg-\[url\(\'\/remove-drink-minus\.svg\'\)\] {
-  background-image: url('/remove-drink-minus.svg');
+.bg-\[url\(\'\.\.\/assets\/remove-drink-minus\.svg\'\)\] {
+  background-image: url('../assets/remove-drink-minus.svg');
 }
 
-.bg-\[url\(\"\/martini-icon\.svg\"\)\] {
-  background-image: url("/martini-icon.svg");
+.bg-\[url\(\"\.\.\/assets\/martini-icon\.svg\"\)\] {
+  background-image: url("../assets/martini-icon.svg");
 }
 
-.bg-\[url\(\"\/back-arrow\.svg\"\)\] {
-  background-image: url("/back-arrow.svg");
+.bg-\[url\(\"\.\.\/assets\/back-arrow\.svg\"\)\] {
+  background-image: url("../assets/back-arrow.svg");
 }
 
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 
-.bg-\[url\(\'\/saved-drinks-arrow\.svg\'\)\] {
-  background-image: url('/saved-drinks-arrow.svg');
+.bg-\[url\(\'\.\.\/assets\/saved-drinks-arrow\.svg\'\)\] {
+  background-image: url('../assets/saved-drinks-arrow.svg');
 }
 
 .from-\[\#D79472\] {
