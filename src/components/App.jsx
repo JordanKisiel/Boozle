@@ -20,7 +20,7 @@ export default function App(){
 
     //load filters from local storage if they exist
     const [filterState, setFilterState] = React.useState(
-        localStorage.getItem("filters") ? JSON.parse(localStorage.getItem("filters")) :
+        JSON.parse(localStorage.getItem("filters")) ||
         {
             "ingredients": [],
             "dislikes": []
@@ -29,14 +29,18 @@ export default function App(){
 
     //load saved drinks from local storage if they exist
     const [savedDrinks, setSavedDrinks] = React.useState(
-        localStorage.getItem("savedDrinks") ? JSON.parse(localStorage.getItem("savedDrinks")) : []
+        JSON.parse(localStorage.getItem("savedDrinks")) || []
     )
-
-    //write filters to local storage so it can be recalled if app refreshed
-    localStorage.setItem("filters", JSON.stringify(filterState))
     
-    //write saved drinks to local storage so they can be recalled later
-    localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks))
+
+    React.useEffect(() => {
+        //write filters to local storage so it can be recalled if app refreshed
+        localStorage.setItem("filters", JSON.stringify(filterState))
+            
+        //write saved drinks to local storage so they can be recalled later
+        localStorage.setItem("savedDrinks", JSON.stringify(savedDrinks))
+    }, [filterState, savedDrinks])
+    
 
     function handleFilterSelect(filterName, isIngredient){
         if(isIngredient){
