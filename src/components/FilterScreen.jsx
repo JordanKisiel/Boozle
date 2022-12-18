@@ -23,10 +23,11 @@ const FilterScreen = React.forwardRef((props, ref) => {
         setIsClearModalOpen(false)
     }
 
-    const filterSelectArray = filterData.filters.map((filter, index) => {
+
+    const filterSelectArray = filterData.filters.map((filter) => {
         return (
             <MotionFilterSelect
-                key={index} 
+                key={filter.title} 
                 title={filter.title}  
                 titleColor={filter.titleColor}
                 bgColor={filter.bgColor} 

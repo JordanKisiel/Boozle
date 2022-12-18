@@ -9,7 +9,7 @@ const SearchResults = React.forwardRef((props, ref) => {
 
     const maxNumToDisplay = 50
 
-    const resultBtnArray = props.sortedResultIDs.map((id, index) => {
+    const resultBtnArray = props.sortedResultIDs.map((id) => {
         const matchingDrink = props.allSearchResults.find((drink) => {
             return drink.idDrink === id
         })
@@ -17,7 +17,7 @@ const SearchResults = React.forwardRef((props, ref) => {
 
         return (
             <MotionResultButton 
-                key={index} 
+                key={matchingDrink.idDrink} 
                 name={matchingDrink.strDrink} 
                 image={matchingDrink.strDrinkThumb ? matchingDrink.strDrinkThumb : '/cocktail-image-placeholder.png'}
                 id={matchingDrink.idDrink} 

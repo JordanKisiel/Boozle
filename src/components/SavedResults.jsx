@@ -8,10 +8,10 @@ const MotionResultButton = motion(ResultButton)
 
 const SavedResults = React.forwardRef((props, ref) => {
 
-    const savedDrinksArray = props.savedDrinks.map((drink, index) => {
+    const savedDrinksArray = props.savedDrinks.map((drink) => {
         return (
             <MotionResultButton 
-                key={index} 
+                key={drink.idDrink} 
                 name={drink.strDrink} 
                 image={drink.strDrinkThumb ? drink.strDrinkThumb : '/cocktail-image-placeholder.png'}
                 id={drink.idDrink} 

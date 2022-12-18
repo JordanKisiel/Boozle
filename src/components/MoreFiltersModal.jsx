@@ -6,10 +6,10 @@ export default function MoreFiltersModal(props){
 
     const sortedIngredients = props.otherIngredients.slice().sort()
 
-    const filterBtnArray = sortedIngredients.map((ingredient, index) => {
+    const filterBtnArray = sortedIngredients.map((ingredient) => {
         return (
             <FilterButton
-                key={index} 
+                key={`${props.filterCategory}-${ingredient}`} 
                 name={ingredient} 
                 bgColor={props.bgColor}
                 filterCategory={props.filterCategory}

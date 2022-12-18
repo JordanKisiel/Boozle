@@ -30,10 +30,10 @@ const FilterSelect = React.forwardRef((props, ref) => {
             ]
         )
     ]
-    const filterBtnArray = totalIngredients.map((ingredient, index) => {
+    const filterBtnArray = totalIngredients.map((ingredient) => {
         return (
             <FilterButton
-                key={index} 
+                key={`${props.title}-${ingredient}`} 
                 name={ingredient} 
                 bgColor={props.bgColor}
                 filterCategory={props.title}
